@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    position: relative;
+    margin: 50px auto;
+    box-shadow: 10px 10px 50px -15px rgba(0, 0, 0, 0.4) inset;
+    padding: 50px;
+    width: 1000px;
+    height: 400px;
+    background-color: #540D6E;
+    box-sizing: border-box;
+}
+
+.unit {
+    height: 100%;
+    stroke-width: 2px;
+    stroke-linecap: square;
+    stroke: white;
+    fill: white;
+    overflow: visible
+}
+
+.unit > path {
+    scale: 0.09;
+}
+
