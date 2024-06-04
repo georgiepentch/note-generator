@@ -1,29 +1,120 @@
-body {
+* {
     margin: 0;
     padding: 0;
+    font-family: 'Playfair', serif;
+    font-size: 18pt;
 }
 
 .main {
-    position: relative;
-    margin: 50px auto;
-    box-shadow: 10px 10px 50px -15px rgba(0, 0, 0, 0.4) inset;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin: 50px auto 20px;
+    font-size: 0;
+    box-shadow: 10px 10px 50px -15px rgba(0, 0, 0, .4) inset;
     padding: 50px;
     width: 1000px;
-    height: 400px;
+    height: 450px;
     background-color: #540D6E;
     box-sizing: border-box;
+    user-select: none;
+    overflow: hidden;
 }
 
 .unit {
     height: 100%;
     stroke-width: 2px;
-    stroke-linecap: square;
     stroke: white;
     fill: white;
-    overflow: visible
+    overflow: visible;
+    filter: drop-shadow( 4px 4px 4px rgba(0, 0, 0, .2));
+    margin-bottom: 3%;
 }
 
 .unit > path {
     scale: 0.09;
 }
+
+.instructions {
+    width: 100%;
+    color: white;
+    font-size: 42pt;
+    text-align: center;
+    margin: auto;
+}
+
+.space-bar {
+    border: 2px solid white;
+    border-radius: 10px;
+    font-family: monospace;
+    padding: 12px 60px;
+    margin: 0 5px;
+    font-size: 14pt;
+    vertical-align: middle;
+}
+
+.options {
+    width: 1000px;
+    margin: auto;
+}
+
+#accidentals, #presets {
+    border: none;
+    text-align: right;
+    outline: none;
+}
+
+#noOfNotes {
+    height: 18pt;
+    width: 26pt;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 0;
+    height: 0;
+    background: #540D6E;
+    box-shadow: -200px 0 0 200px #540D6E;
+}
+
+.slider {
+    appearance: none;
+    height: 23px;
+    width: 240px;
+    background: #d3d3d3;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-bottom: 2px;
+}
+
+#curve {
+    width: 240px;
+    transform-origin: top left;
+    transform: rotateZ(-90deg) translateX(-240px);
+    margin-bottom: -58px;
+} 
+
+#curve-labels {
+    display: flex;
+    flex-direction: row;
+    width: 298px;
+    justify-content: space-around;
+}
+
+#curve-labels > * {
+    font-size: 10pt;
+    vertical-align: top;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-align: center;
+    flex-basis: 0;
+    flex: 1;
+}
+
 
