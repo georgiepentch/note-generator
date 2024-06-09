@@ -17,6 +17,8 @@ sharp.setAttribute("d", sharpPath);
 trebleClef.setAttribute("d", trebleClefPath);
 
 
+document.getElementsByName("accidentals")[0].checked = true;
+
 function clear() {
     main.innerHTML = "";
 }
@@ -27,8 +29,26 @@ function generate() {
         document.getElementById("noOfNotes").value = 1
     }
     let len = parseInt(document.getElementById("noOfNotes").value);
-    let melody = Array.from({length: len}, () => Math.floor(Math.random() * 11));
+
+    let probs = document.getElementsByClassName("slider");
+    let probSum = 0;
+    for (let i = 0; i < 12; i++) {
+        probSum += +probs[i].value;
+    }
+    let melody = [];
+    for (let i = 0; i < len; i++) {
+        let draw = Math.floor(Math.random() * probSum);
+        for (let j in probs) {
+            if (draw <= probs[j].value) {
+                melody.push(+j);
+                break;
+            } else {
+                draw -= probs[j].value;
+            }
+        }
+    }
     
+    console.log(melody);
     start();
     for (let i in melody) {
         staff();
@@ -46,13 +66,21 @@ function note(p) {
     let unit = main.lastElementChild;
     let head = notehead.cloneNode(false);
 
-    let accidentals = document.getElementById("accidentals").value
-    if (accidentals == "both") {
-        accidentals = ["flats", "sharps"][Math.round(Math.random())];
+    // 0 = flats, 1 = sharps, 2 = both
+    let accidentals = 0;
+    for (let i = 0; i < 3; i++) {
+        if (document.getElementsByName("accidentals")[i].checked) {
+            accidentals = +i;
+            break;
+        }
     }
+    if (accidentals == 2) {
+        accidentals = [0, 1][Math.round(Math.random())];
+    }
+
     let acc;
     let hasAcc = [1, 3, 5, 8, 10].includes(p);
-    if (accidentals == "flats") {
+    if (accidentals == 0) {
         acc = flat.cloneNode(false);
         acc.style.transform = `translate(300%, calc(279% * (${flatDist[p]} / 3)))`;
         head.style.transform = `translate(600%, calc(279% * (${flatDist[p]} / 3)))`;
@@ -91,7 +119,7 @@ function end() {
 function adjustHeight(n) {
     // n = no. of units
     let height;
-    if (n <= 6) {
+    if (n <= 7) {
         height = 900 / n;
     } else {
         height = 300 / Math.ceil(Math.exp((Math.log(n) - Math.log(3)) / 2));
@@ -100,6 +128,46 @@ function adjustHeight(n) {
     for (u in units) {
         if(units[u].style){units[u].style.height = `calc(${height}px - 3%)`};
     }
+}
+
+function changeDist() {
+    let preset = document.getElementById("presets").value;
+    let probs = document.getElementsByClassName("slider");
+    if (preset == "uniform") {
+        for (let i = 0; i < 11; i++) {
+            probs[i].value = 500;
+        }
+    } else if (preset == "gaussian") {
+        probs[0].value = 44;
+        probs[1].value = 135;
+        probs[2].value = 325;
+        probs[3].value = 607;
+        probs[4].value = 882;
+        probs[5].value = 1000;
+        probs[6].value = 1000;
+        probs[7].value = 882;
+        probs[8].value = 607;
+        probs[9].value = 325;
+        probs[10].value = 135;
+        probs[11].value = 44;
+    } else if (preset == "natural") {
+        probs[0].value = 500;
+        probs[1].value = 0;
+        probs[2].value = 500;
+        probs[3].value = 0;
+        probs[4].value = 500;
+        probs[5].value = 0;
+        probs[6].value = 500;
+        probs[7].value = 500;
+        probs[8].value = 0;
+        probs[9].value = 500;
+        probs[10].value = 0;
+        probs[11].value = 500;
+    }
+}
+
+function custom() {
+    document.getElementById("presets").value = "custom";
 }
 
 document.addEventListener("keydown", function(event) {

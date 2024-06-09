@@ -10,7 +10,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    margin: 50px auto 20px;
+    margin: 20px auto 20px;
     font-size: 0;
     box-shadow: 10px 10px 50px -15px rgba(0, 0, 0, .4) inset;
     padding: 50px;
@@ -117,4 +117,12 @@
     flex: 1;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 
+input[type=radio] {
+    accent-color: #540D6E;
+    margin-left: 10px;
+}

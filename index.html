@@ -51,36 +51,34 @@
     <div class="options">
         <div class="opt">
             Accidentals:
-            <select id="accidentals" name="accidentals">
-                <option value="flats">&#x266d;</option>
-                <option value="sharps">&#x266f;</option>
-                <option value="both">&#x266f;/&#x266d;</option>
-            </select>
+            <input type="radio" name="accidentals">&#x266d;
+            <input type="radio" name="accidentals">&#x266f;
+            <input type="radio" name="accidentals">&#x266f;<span style="font-size: 24pt; margin: 0 -3px 0;">/</span>&#x266d;
         </div>
         <div class="opt">
             No. of notes:
             <input type="number" value="1" id="noOfNotes" onchange="generate()" min="1">
         </div>
         <div class="opt">
-            Distribution: <select name="presets" id="presets">
+            Distribution: <select id="presets" onchange="changeDist()">
                 <option value="uniform">Uniform</option>
                 <option value="gaussian">Gaussian</option>
-                <option value="random">Random</option>
+                <option value="natural">Natural</option>
                 <option value="custom">Custom</option>
             </select>
             <div id="curve">
-                <input class="slider" type="range" min="0" max="1000" value="500">
-                <input class="slider" type="range" min="0" max="1000" value="500">
-                <input class="slider" type="range" min="0" max="1000" value="500">
-                <input class="slider" type="range" min="0" max="1000" value="500">
-                <input class="slider" type="range" min="0" max="1000" value="500">
-                <input class="slider" type="range" min="0" max="1000" value="500">
-                <input class="slider" type="range" min="0" max="1000" value="500">
-                <input class="slider" type="range" min="0" max="1000" value="500">
-                <input class="slider" type="range" min="0" max="1000" value="500">
-                <input class="slider" type="range" min="0" max="1000" value="500">
-                <input class="slider" type="range" min="0" max="1000" value="500">
-                <input class="slider" type="range" min="0" max="1000" value="500">
+                <input class="slider" type="range" min="0" max="1000" value="500" onchange="custom()">
+                <input class="slider" type="range" min="0" max="1000" value="500" onchange="custom()">
+                <input class="slider" type="range" min="0" max="1000" value="500" onchange="custom()">
+                <input class="slider" type="range" min="0" max="1000" value="500" onchange="custom()">
+                <input class="slider" type="range" min="0" max="1000" value="500" onchange="custom()">
+                <input class="slider" type="range" min="0" max="1000" value="500" onchange="custom()">
+                <input class="slider" type="range" min="0" max="1000" value="500" onchange="custom()">
+                <input class="slider" type="range" min="0" max="1000" value="500" onchange="custom()">
+                <input class="slider" type="range" min="0" max="1000" value="500" onchange="custom()">
+                <input class="slider" type="range" min="0" max="1000" value="500" onchange="custom()">
+                <input class="slider" type="range" min="0" max="1000" value="500" onchange="custom()">
+                <input class="slider" type="range" min="0" max="1000" value="500" onchange="custom()">
             </div>
             <div id="curve-labels">
                 <div>F</div>
