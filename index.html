@@ -11,9 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="main" onclick="generate()">
-        <div class="instructions">
-            Click this window or press <span class="space-bar">SPACE</span>
+    <div class="wrapper">
+        <div class="colors">
+            <div class="selected-col" style="background-color: #540D6E" onclick="colChange(0)"></div>
+            <div style="background-color: #c42623" onclick="colChange(1)"></div>
+            <div style="background-color: #087E8B" onclick="colChange(2)"></div>
+        </div><div class="main" onclick="generate()">
+            <div class="instructions">
+                Click this window or press <span class="space-bar">SPACE</span>
+            </div>
         </div>
     </div>
     <template id="blank-staff">

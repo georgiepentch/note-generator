@@ -1,3 +1,8 @@
+:root {
+    --maincol: #540D6E;
+    --writingcol: white;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,18 +10,46 @@
     font-size: 18pt;
 }
 
+.wrapper {
+    position: relative;
+    width: 1080px;
+    left: 50%;
+    margin-left: -580px;
+}
+
+.colors {
+    display: inline-block;
+    width: 80px;
+    height: 490px;
+    vertical-align: top;
+}
+
+.colors > * {
+    width: 30px;
+    height: 30px;
+    border-radius: 12px;
+    margin: 20px;
+    background-clip: content-box;
+    box-sizing: border-box;
+}
+
+.selected-col, .colors > *:hover {
+    padding: 2px;
+    border: 2px solid black;
+}
+
 .main {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    margin: 20px auto 20px;
+    margin: 20px 0 20px;
     font-size: 0;
     box-shadow: 10px 10px 50px -15px rgba(0, 0, 0, .4) inset;
     padding: 50px;
     width: 1000px;
     height: 450px;
-    background-color: #540D6E;
+    background-color: var(--maincol);
     box-sizing: border-box;
     user-select: none;
     overflow: hidden;
@@ -25,8 +58,8 @@
 .unit {
     height: 100%;
     stroke-width: 2px;
-    stroke: white;
-    fill: white;
+    stroke: var(--writingcol);
+    fill: var(--writingcol);
     overflow: visible;
     filter: drop-shadow( 4px 4px 4px rgba(0, 0, 0, .2));
     margin-bottom: 3%;
@@ -38,14 +71,14 @@
 
 .instructions {
     width: 100%;
-    color: white;
+    color: var(--writingcol);
     font-size: 42pt;
     text-align: center;
     margin: auto;
 }
 
 .space-bar {
-    border: 2px solid white;
+    border: 2px solid var(--writingcol);
     border-radius: 10px;
     font-family: monospace;
     padding: 12px 60px;
@@ -77,8 +110,8 @@
     appearance: none;
     width: 0;
     height: 0;
-    background: #540D6E;
-    box-shadow: -200px 0 0 200px #540D6E;
+    background: var(--maincol);
+    box-shadow: -200px 0 0 200px var(--maincol);
 }
 
 .slider {
@@ -123,6 +156,8 @@ input::-webkit-inner-spin-button {
 }
 
 input[type=radio] {
-    accent-color: #540D6E;
+    accent-color: var(--maincol);
     margin-left: 10px;
 }
+
+
