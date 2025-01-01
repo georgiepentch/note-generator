@@ -161,3 +161,40 @@ input[type=radio] {
 }
 
 
+@media (width <= 1160px) {
+    .wrapper {
+        margin-left: -50%;
+    }
+
+    .main {
+        width: 100%;
+        aspect-ratio: 100 / 45;
+        height: auto;
+    }
+
+    .instructions {
+        font-size: 5.18vw;
+    }
+
+    .space-bar {
+        font-size: 1.73vw;
+        display: inline-block;
+        width: 6%;
+    }
+
+    .colors {
+        width: 100%;
+        height: fit-content;
+
+    }
+
+    .colors > * {
+        display: inline-block;
+        margin-left: 30px;
+        margin-right: 0;
+    }
+
+    .options {
+        width: 100%;
+    }
+}
